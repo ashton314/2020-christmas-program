@@ -9,6 +9,7 @@ config :christmas_music, ChristmasMusic.Repo,
   username: "postgres",
   password: "postgres",
   database: "christmas_music_test#{System.get_env("MIX_TEST_PARTITION")}",
+  port: 5434,
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
