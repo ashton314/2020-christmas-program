@@ -7,6 +7,6 @@ defmodule ChristmasMusicWeb.PageController do
   use ChristmasMusicWeb, :controller
 
   def index(conn, _params) do
-    render(conn, "index.html")
+    render(assign(conn, :page_title, "Submission Guidelines"), "index.html")
   end
 end
