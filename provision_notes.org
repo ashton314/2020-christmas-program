@@ -1,0 +1,62 @@
+#+TITLE: Provision Notes
+
+* Preliminary
+
+Use FreeBSD.
+
+Change the shell:
+
+#+begin_src bash
+bash
+EDITOR=vim chsh
+#+end_src
+
+And replace =/bin/csh= with =/usr/local/bin/bash=. Last time I changed this to =/bin/bash= and locked myself out of the server. Oops.
+
+* Application Setup
+
+Run the following under bash. csh doesn't like the ~MIX_ENV=prod ...~ syntax.
+
+#+begin_src bash
+pkg update
+yes | pkg install erlang elixir node yarn git postgresql12-server-12.4_1
+git clone https://github.com/ashton314/2020-christmas-program.git
+cd 2020-christmas-program
+mix deps.get --only prod
+#+end_src
+
+Before we compile, we'll need to get a config file setup. Dump the following into =.env-vars=:
+
+#+begin_src bash
+export DATABASE_URL="ecto://phoenix:PASSWORD_GOES_HERE@localhost/christmas_music"
+export SECRET_KEY_BASE="SECRET_KEY_GOES_HERE"
+#+end_src
+
+* Web Assets
+
+Once you've got all the deps and the project cloned, then you'll want to bundle your CSS assets:
+
+#+begin_src bash
+cd assets/
+yarn
+#+end_src
+
+* Database Setup
+
+Following the instructions after installing Postgres:
+
+#+begin_src bash
+echo 'postgresql_enable="YES"' >> /etc/rc.conf
+/usr/local/etc/rc.d/postgresql initdb
+/usr/local/etc/rc.d/postgresql start
+#+end_src
+
+Now you'll need to create a user for phoenix to access the db:
+
+#+begin_src bash
+su postgres
+createuser -sdrP phoenix
+#+end_src
+
+Enter the password for the phoenix user; make sure you save this so you can pass it to phoenix later on.
+
