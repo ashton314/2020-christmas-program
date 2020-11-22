@@ -24,7 +24,7 @@ defmodule ChristmasMusicWeb.Router do
   scope "/", ChristmasMusicWeb do
     pipe_through :browser
 
-    live "/", PageLive, :index
+    get "/", PageController, :index
   end
 
   # Other scopes may use custom stacks.
