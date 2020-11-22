@@ -1,7 +1,7 @@
-<article class="w-100 lg:w-1/2 mx-auto mt-5 border shadow-md p-4 rounded">
-    <h2 class="text-4xl text-center leading-loose">Submission Guidelines</h2>
-    <p class="my-3">
-	<ul class="list-disc list-inside">
+<article class="w-100 lg:w-1/2 mx-auto mt-5 border shadow-md p-4 rounded prose">
+    <h2>Submission Guidelines</h2>
+    <p>
+	<ul>
 	    <li>The submissions must be Christ/Christmas focused.</li>
 	    <li>You may submit videos, pictures, audio recordings, or simply text.
 		<p>We’re looking for musical numbers, stories, pictures of art or decor you’d like to share (such as nativities, paintings, or even your Christmas tree), written stories, scriptures, etc.</p>
@@ -11,13 +11,17 @@
 	</ul>
     </p>
 
-    <p class="my-3"><em>If you need someone to help coordinate an accompanist or other concerns, you can message Sarah Wiersdorf directly.</em></p>
+    <p><em>If you need someone to help coordinate an accompanist or other concerns, you can message Sarah Wiersdorf directly.</em></p>
 
-    <p class="my-3">
-	<strong>PLEASE NOTE:</strong> By posting your content here, you are giving the event creators permission to use your content. We are building another website where we will be compiling submissions. Submissions that are posted on Facebook will also be posted on the website, and submissions that are sent to us through the website will be posted on Facebook. This is the only way we will use your submissions.
+    <p>
+	<strong>PLEASE NOTE:</strong> By posting your content here, you are giving the event creators permission to use your content. Submissions that are posted on Facebook will also be posted on this website, and submissions that are sent to us through this website will be posted on Facebook. This is the only way we will use your submissions.
     </p>
 
-    <p class="my-3">
+    <p class="rounded-md bg-red-100 px-3 py-2">
+	The submission section of this website is still under construction! We will notify everyone once submissions are open.
+    </p>
+
+    <p>
 	<strong>This is a public Facebook event page</strong>, and therefore anyone can see what you post here. Feel free to share this page with friends and family to help spread joy this Christmas season.
     </p>
 </article>
