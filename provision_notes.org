@@ -13,6 +13,8 @@ EDITOR=vim chsh
 
 And replace =/bin/csh= with =/usr/local/bin/bash=. Last time I changed this to =/bin/bash= and locked myself out of the server. Oops.
 
+The second time I did this I locked myself out of the server /again/. I think that's because I forgot to add the shell into =/etc/shells=.
+
 * Application Setup
 
 Run the following under bash. csh doesn't like the ~MIX_ENV=prod ...~ syntax.
@@ -60,3 +62,29 @@ createuser -sdrP phoenix
 
 Enter the password for the phoenix user; make sure you save this so you can pass it to phoenix later on.
 
+It might also be a good idea to create a password for the root user in case the ssh authentication gets broken for some reason. ¯\_(ツ)_/¯
+
+* Asset signing
+
+Go back to your =assets/= folder and run the asset compilation commands:
+
+#+begin_src bash
+cd assets
+yarn run deploy			# This one takes a minute
+cd ..
+mix phx.digest
+#+end_src
+
+After that you should be good to start the server:
+
+#+begin_src bash
+PORT=80 mix phx.server
+#+end_src
+
+I think I neglected to add a AAAA record to point to the server; you'll have to remove the line ~transport_options: [socket_opts: [:inet6]]~ from the =prod.secret.exs= file unless a AAAA record is present.
+
+To start Phoenix in daemon mode, run:
+
+#+begin_src bash
+PORT=80 MIX_ENV=prod elixir --erl "-detached" -S mix phx.server
+#+end_src
