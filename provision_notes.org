@@ -25,22 +25,6 @@ cd 2020-christmas-program
 mix deps.get --only prod
 #+end_src
 
-Before we compile, we'll need to get a config file setup. Dump the following into =.env-vars=:
-
-#+begin_src bash
-export DATABASE_URL="ecto://phoenix:PASSWORD_GOES_HERE@localhost/christmas_music"
-export SECRET_KEY_BASE="SECRET_KEY_GOES_HERE"
-#+end_src
-
-* Web Assets
-
-Once you've got all the deps and the project cloned, then you'll want to bundle your CSS assets:
-
-#+begin_src bash
-cd assets/
-yarn
-#+end_src
-
 * Database Setup
 
 Following the instructions after installing Postgres:
@@ -59,4 +43,33 @@ createuser -sdrP phoenix
 #+end_src
 
 Enter the password for the phoenix user; make sure you save this so you can pass it to phoenix later on.
+
+* Compilation, Env setup
+
+Before we compile, we'll need to get a config file setup. Dump the following into =.env-vars=:
+
+#+begin_example bash
+export DATABASE_URL="ecto://phoenix:PASSWORD_GOES_HERE@localhost/christmas_music"
+export SECRET_KEY_BASE="SECRET_KEY_GOES_HERE"
+export MIX_ENV="prod"
+#+end_example
+
+Once you've set that up, you can compile with:
+
+#+begin_src bash
+source .env-vars
+yes | mix compile
+#+end_src
+
+* Web Assets
+
+Once you've got all the deps and the project cloned, then you'll want to bundle your CSS assets:
+
+#+begin_src bash
+cd assets/
+yarn
+yarn run deploy			# This takes several seconds
+cd ..
+mix phx.digest
+#+end_src
 
